@@ -1,0 +1,5 @@
+._*
+.DS_STORE
+/config.json
+*.OLD
+node_modules
