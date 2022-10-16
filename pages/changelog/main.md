@@ -1,6 +1,6 @@
 # Changelog
 
-[**Version 1.0**](https://github.com/Jexanti/Jungle-Bot/blob/main/pages/changelod/1.0.md)
+[**Version 1.0**](https://github.com/Jexanti/Jungle-Bot/blob/main/pages/changelog/1.0.md)
 
 ---
 
