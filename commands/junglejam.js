@@ -8,9 +8,9 @@ module.exports = {
 	async execute(interaction) {
 		console.log('junglejam.js running...')
 		
-		debug = true
-
 		fs = require('fs');
+		
+		debug = true
 
 		const debugLog = (string, obj) => {
 			if (debug == true) {

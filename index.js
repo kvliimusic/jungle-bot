@@ -1,32 +1,51 @@
+debug = true
+
+const debugLog = (string, obj) => {
+	if (debug == true) {
+		console.log('DEBUG ---',string, obj)
+	}
+}
+
 // import libraries and files
 const fs = require('node:fs');
 const path = require('node:path');
 const { Client, Collection, GatewayIntentBits, } = require('discord.js');
 const { token, status, statusType } = require('./config.json');
 const keepAlive = require('./server')
+debugLog('imported libraries and files')
+debugLog('token', token)
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+debugLog('created new client')
 
 // unrestricted commands
 client.commands = new Collection();
 const commandsPath = path.join(__dirname, 'commands');
+debugLog('commands path (unrestricted)',commandsPath)
 const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
+debugLog('command files (unrestricted)',commandFiles)
 
 for (const file of commandFiles) {
+	debugLog('working on file',file)
 	const filePath = path.join(commandsPath, file);
 	const command = require(filePath);
 	client.commands.set(command.data.name, command);
+	debugLog('finished',file)
 }
 
 // restricted commands
 client.restricteds = new Collection();
 const restrictedsPath = path.join(__dirname, 'restricted');
+debugLog('commands path (restricted)',commandsPath)
 const restrictedFiles = fs.readdirSync(restrictedsPath).filter(file => file.endsWith('.js'));
+debugLog('command files (restricted)',commandFiles)
 
 for (const file of restrictedFiles) {
+	debugLog('working on file',file)
 	const filePath = path.join(restrictedsPath, file);
 	const restricted = require(filePath);
 	client.restricteds.set(restricted.data.name, restricted);
+	debugLog('finished',file)
 }
 
 // embed for if an error occurs
@@ -43,24 +62,32 @@ const unauthorisedEmbed = {
 	description: 'If you believe this is an error and you should be able to run this command, please DM <@!530418630102482945> with the details, I\'ll try to fix it :slight_smile:'
 }
 
+debugLog('finished creating predefined embeds')
+
 // log when connected to discord
 client.once('ready', () => { 
 	console.log('connected to discord') 
 	client.user.setActivity(status, { type: statusType })
 	keepAlive()
+	debugLog('keeping alive')
 });
 
 // upon interaction recieved
 client.on('interactionCreate', async interaction => {
-	if (!interaction.isChatInputCommand()) return;
+	debugLog('recieved command')
+	if (!interaction.isChatInputCommand()) {
+		debugLog('ending, was not chat input command')
+		return;
+	}
 
 	const restricted = client.restricteds.get(interaction.commandName);
 	const command = client.commands.get(interaction.commandName);
 
 	// if the command is a restricted command
 	if (restricted) {
+		debugLog('user attempting to run restricted command, checking for auth...')
 		if (interaction.member.roles.cache.has('715932243494830110')) {
-			try{
+			try {
 				// run the command
 				await restricted.execute(interaction);
 				console.log('restricted command run successfully')
@@ -83,7 +110,7 @@ client.on('interactionCreate', async interaction => {
 				}
 			}
 		} else {
-
+			debugLog('unauthorised')
 			// unauthorised
 			try{
 				await interaction.reply({ embeds: [unauthorisedEmbed] , ephemeral: true})
@@ -96,6 +123,7 @@ client.on('interactionCreate', async interaction => {
 	
 	// if it's a non-restricted command
 	else if (command) {
+		debugLog('running normal command')
 		try {
 			// run the command
 			await command.execute(interaction);
