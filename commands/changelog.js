@@ -9,7 +9,7 @@ module.exports = {
 		const embed = {
 			title: "Click here to view the changelog:",
 			color: 0x39f79e,
-			description: 'https://members.beatdrop.ca/products/the-jungle/categories/2147982833/posts/2157218725'
+			description: 'https://github.com/Jexanti/Jungle-Bot/blob/main/pages/changelog/main.md'
 		}
 		console.log('successfully reached end of file, returning data')
 		return interaction.reply({ embeds: [embed] });
