@@ -1,4 +1,5 @@
 const { SlashCommandBuilder } = require('discord.js');
+const config = require ('../config.json')
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -9,7 +10,7 @@ module.exports = {
 		const embed = {
 			title: "Download the files for the weekly session here:",
 			color: 0x39f79e,
-			description: 'https://members.beatdrop.ca/products/the-jungle/categories/2147982833/posts/2157218725'
+			description: config.filesLink
 		}
 		console.log('successfully reached end of file, returning data')
 		return interaction.reply({ embeds: [embed] });

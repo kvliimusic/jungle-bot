@@ -1,4 +1,5 @@
 const { SlashCommandBuilder } = require('discord.js');
+const config = require ('../config.json')
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -114,7 +115,7 @@ module.exports = {
 				return 'Watch here: https://twitch.tv/beatdropmusicschool'
 			}
 			else {
-				return 'Submit your song by '+date+' here: https://dropbox.com/request/GZb825ffS0HdDM5JepX3'
+				return 'Submit your song by '+date+' here: '+config.jamLink
 			}
 		}
 

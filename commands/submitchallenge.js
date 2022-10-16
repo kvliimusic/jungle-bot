@@ -1,4 +1,5 @@
 const { SlashCommandBuilder } = require('discord.js');
+const config = require ('../config.json')
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -9,7 +10,7 @@ module.exports = {
 		const embed = {
 			title: "Submit your challenge here:",
 			color: 0x39f79e,
-			description: 'https://www.dropbox.com/request/9z5S5RrVCEA2nKBbllM7'
+			description: config.challengeLink
 		}
 		console.log('successfully reached end of file, returning data')
 		return interaction.reply({ embeds: [embed] });
