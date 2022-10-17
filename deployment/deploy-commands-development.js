@@ -13,9 +13,9 @@ const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord.js');
 
 debugLog('imported stuff')
+const commands = [];
 
 // unrestricted commands
-client.commands = new Collection();
 const commandsPath = path.join(__dirname, '../commands');
 debugLog('commands path (unrestricted)',commandsPath)
 const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
@@ -30,7 +30,6 @@ for (const file of commandFiles) {
 }
 
 // restricted commands
-client.restricteds = new Collection();
 const restrictedsPath = path.join(__dirname, '../restricted');
 debugLog('commands path (restricted)',restrictedsPath)
 const restrictedFiles = fs.readdirSync(restrictedsPath).filter(file => file.endsWith('.js'));
@@ -40,12 +39,11 @@ for (const file of restrictedFiles) {
 	debugLog('working on file',file)
 	const filePath = path.join(restrictedsPath, file);
 	const restricted = require(filePath);
-	commands.push(command.data.toJSON());
+	commands.push(restricted.data.toJSON());
 	debugLog('finished',file)
 }
 
 //developmentd commands
-client.developments = new Collection();
 const developmentsPath = path.join(__dirname, '../developmentCommands');
 debugLog('commands path (development)',developmentsPath)
 const developmentsFiles = fs.readdirSync(developmentsPath).filter(file => file.endsWith('.js'));
@@ -53,14 +51,15 @@ debugLog('command files (development)',developmentsFiles)
 
 for (const file of developmentsFiles) {
 	debugLog('working on file',file)
-	const filePath = path.join(developmentssPath, file);
+	const filePath = path.join(developmentsPath, file);
 	const development = require(filePath);
-	commands.push(command.data.toJSON());
+	commands.push(development.data.toJSON());
 	debugLog('finished',file)
 }
 
+debugLog('commands', commands)
+
 const rest = new REST({ version: '10' }).setToken(token);
-debugLog('rest', rest)
 
 rest.put(Routes.applicationGuildCommands(clientId, guildId_development), { body: commands })
 	.then(() => console.log('Successfully registered commands in development server..'))
