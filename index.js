@@ -9,7 +9,7 @@ const debugLog = (string, obj) => {
 // import libraries and files
 const fs = require('node:fs');
 const path = require('node:path');
-const { Client, Collection, GatewayIntentBits, } = require('discord.js');
+const { Client, Collection, GatewayIntentBits, ActivityType } = require('discord.js');
 const { token, status, statusType } = require('./config.json');
 const keepAlive = require('./server')
 debugLog('imported libraries and files')
@@ -67,7 +67,15 @@ debugLog('finished creating predefined embeds')
 // log when connected to discord
 client.once('ready', () => { 
 	console.log('connected to discord') 
-	client.user.setActivity(status, { type: statusType })
+	// Jungle Jam
+	// client.user.setPresence({
+	// 	activities: [{ name: `the Jungle Jam`, type: ActivityType.Streaming, url: `https://twitch.tv/beatdropmusicschool` }],
+	// 	status: 'dnd',
+	// });
+	client.user.setPresence({
+		activities: [{ name: status, type: ActivityType.Watching }],
+		status: 'idle',
+	});
 	keepAlive()
 	debugLog('keeping alive')
 });
