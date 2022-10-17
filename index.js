@@ -1,7 +1,6 @@
-debug = true
-
+const { token, status, statusType, debug } = require('./config.json');
 const debugLog = (string, obj) => {
-	if (debug == true) {
+	if (debug == 'on') {
 		console.log('DEBUG ---',string, obj)
 	}
 }
@@ -10,7 +9,6 @@ const debugLog = (string, obj) => {
 const fs = require('node:fs');
 const path = require('node:path');
 const { Client, Collection, GatewayIntentBits, ActivityType } = require('discord.js');
-const { token, status, statusType } = require('./config.json');
 const keepAlive = require('./server')
 debugLog('imported libraries and files')
 debugLog('token', token)

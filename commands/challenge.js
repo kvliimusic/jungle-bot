@@ -7,11 +7,9 @@ module.exports = {
 	.setDescription('View the weekly challenge.'),
 	async execute(interaction) {
 		console.log('challenge.js running...')
-		
-		debug = true
 
 		const debugLog = (string, obj) => {
-			if (debug == true) {
+			if (config.debug == 'on') {
 				console.log('DEBUG ---',string, obj)
 			}
 		}

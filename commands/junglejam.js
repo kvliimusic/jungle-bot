@@ -9,11 +9,9 @@ module.exports = {
 		console.log('junglejam.js running...')
 		
 		fs = require('fs');
-		
-		debug = true
 
 		const debugLog = (string, obj) => {
-			if (debug == true) {
+			if (config.debug == 'on') {
 				console.log('DEBUG ---',string, obj)
 			}
 		}
