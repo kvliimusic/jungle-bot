@@ -10,7 +10,7 @@ module.exports = {
 
 		const debugLog = (string, obj) => {
 			if (config.debug == 'on') {
-				console.log('DEBUG ---',string, obj)
+				console.log('DEBUG (challenge.js) ---',string, obj)
 			}
 		}
 

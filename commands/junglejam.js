@@ -12,7 +12,7 @@ module.exports = {
 
 		const debugLog = (string, obj) => {
 			if (config.debug == 'on') {
-				console.log('DEBUG ---',string, obj)
+				console.log('DEBUG (junglejam.js) ---',string, obj)
 			}
 		}
 

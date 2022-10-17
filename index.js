@@ -1,7 +1,7 @@
 const { token, status, statusType, debug } = require('./config.json');
 const debugLog = (string, obj) => {
 	if (debug == 'on') {
-		console.log('DEBUG ---',string, obj)
+		console.log('DEBUG (index.js) ---',string, obj)
 	}
 }
 

@@ -1,11 +1,11 @@
-const { clientId, guildId_104, token, debug } = require('../config.json');
+const { clientId, guildId_testing, token, debug } = require('../config.json');
 const debugLog = (string, obj) => {
 	if (debug == 'on') {
-		console.log('DEBUG ---',string, obj)
+		console.log('DEBUG (deploy testing) ---',string, obj)
 	}
 }
 
-debugLog('deploy-commands-104.js')
+debugLog('deploy-commands-testing.js')
 
 const fs = require('fs');
 const path = require('path');
@@ -47,6 +47,6 @@ debugLog('commands', commands)
 
 const rest = new REST({ version: '10' }).setToken(token);
 
-rest.put(Routes.applicationGuildCommands(clientId, guildId_104), { body: commands })
-	.then(() => console.log('Successfully registered commands in 104 serer.'))
+rest.put(Routes.applicationGuildCommands(clientId, guildId_testing), { body: commands })
+	.then(() => console.log('Successfully registered commands in testing server.'))
 	.catch(console.error);

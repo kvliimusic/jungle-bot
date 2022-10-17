@@ -1,11 +1,11 @@
-const { clientId, guildId_development, token, debug } = require('../config.json');
+const { clientId, guildId_104, token, debug } = require('../config.json');
 const debugLog = (string, obj) => {
 	if (debug == 'on') {
-		console.log('DEBUG ---',string, obj)
+		console.log('DEBUG (deploy 104) ---',string, obj)
 	}
 }
 
-debugLog('deploy-commands-development.js')
+debugLog('deploy-commands-104.js')
 
 const fs = require('fs');
 const path = require('path');
@@ -43,24 +43,10 @@ for (const file of restrictedFiles) {
 	debugLog('finished',file)
 }
 
-//developmentd commands
-const developmentsPath = path.join(__dirname, '../developmentCommands');
-debugLog('commands path (development)',developmentsPath)
-const developmentsFiles = fs.readdirSync(developmentsPath).filter(file => file.endsWith('.js'));
-debugLog('command files (development)',developmentsFiles)
-
-for (const file of developmentsFiles) {
-	debugLog('working on file',file)
-	const filePath = path.join(developmentsPath, file);
-	const development = require(filePath);
-	commands.push(development.data.toJSON());
-	debugLog('finished',file)
-}
-
 debugLog('commands', commands)
 
 const rest = new REST({ version: '10' }).setToken(token);
 
-rest.put(Routes.applicationGuildCommands(clientId, guildId_development), { body: commands })
-	.then(() => console.log('Successfully registered commands in development server..'))
+rest.put(Routes.applicationGuildCommands(clientId, guildId_104), { body: commands })
+	.then(() => console.log('Successfully registered commands in 104 serer.'))
 	.catch(console.error);
