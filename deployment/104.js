@@ -5,7 +5,7 @@ const debugLog = (string, obj) => {
 	}
 }
 
-debugLog('deploy-commands-104.js')
+debugLog('deployment 104')
 
 const fs = require('fs');
 const path = require('path');

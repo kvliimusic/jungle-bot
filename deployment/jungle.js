@@ -1,11 +1,11 @@
-const { clientId, guildId_production, token, debug } = require('../config.json');
+const { clientId, guildId_jungle, token, debug } = require('../config.json');
 const debugLog = (string, obj) => {
 	if (debug == 'on') {
-		console.log('DEBUG (deploy production) ---',string, obj)
+		console.log('DEBUG (deploy jungle) ---',string, obj)
 	}
 }
 
-debugLog('deploy-commands-production.js')
+debugLog('deployment jungle')
 
 const fs = require('fs');
 const path = require('path');
@@ -47,6 +47,6 @@ debugLog('commands', commands)
 
 const rest = new REST({ version: '10' }).setToken(token);
 
-rest.put(Routes.applicationGuildCommands(clientId, guildId_production), { body: commands })
+rest.put(Routes.applicationGuildCommands(clientId, guildId_jungle), { body: commands })
 	.then(() => console.log('Successfully registered commands to Jungle server.'))
 	.catch(console.error);
