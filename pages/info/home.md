@@ -8,6 +8,8 @@ Here's a few pages you may want to visit:
 
 [Changelog](https://github.com/Jexanti/Jungle-Bot/blob/main/pages/changelog/main.md)
 
+[Help](https://github.com/Jexanti/Jungle-Bot/blob/main/pages/info/help.md)
+
 [Github Repository](https://github.com/Jexanti/Jungle-Bot)
 
 # About
