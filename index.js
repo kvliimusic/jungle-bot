@@ -34,7 +34,7 @@ for (const file of commandFiles) {
 // restricted commands
 client.restricteds = new Collection();
 const restrictedsPath = path.join(__dirname, 'restricted');
-debugLog('commands path (restricted)',restrictedPath)
+debugLog('commands path (restricted)',restrictedsPath)
 const restrictedFiles = fs.readdirSync(restrictedsPath).filter(file => file.endsWith('.js'));
 debugLog('command files (restricted)',restrictedFiles)
 
