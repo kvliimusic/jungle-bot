@@ -24,9 +24,15 @@
 
 1. Type `/` into the message box in the bot commands channel on the discord server. A menu that looks like this should appear.
 
+![Help image 1](https://github.com/Jexanti/Jungle-Bot/blob/main/pages/images/help1.png?raw=true)
+
 2. On the left, click on the icon of the jungle bot.
 
+![Help image 2](https://github.com/Jexanti/Jungle-Bot/blob/main/pages/images/help2.png?raw=true)
+
 3. Scroll through the list of commands, and click one. It should go into your message box, like this.
+
+![Help image 3](https://github.com/Jexanti/Jungle-Bot/blob/main/pages/images/help3.png?raw=true)
 
 4. Send the message like you would any normal message. The bot should respond.
 
