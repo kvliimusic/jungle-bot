@@ -36,6 +36,8 @@
 
 4. Send the message like you would any normal message. The bot should respond.
 
+![Help image 4](https://github.com/Jexanti/Jungle-Bot/blob/main/pages/images/help4.png?raw=true)
+
 ---
 
 [*Return to homepage*](https://github.com/Jexanti/Jungle-Bot/blob/main/pages/info/home.md)
